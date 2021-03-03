@@ -152,10 +152,14 @@ ignition::msgs::Set(markerMsg.add_point(),
            double theta=atan2( _wrench.force.z, sqrt(pow(_wrench.force.y,2)+pow(_wrench.force.x,2)));
 
            ignition::msgs::Set(markerMsg.mutable_pose(),
-                               ignition::math::Pose3d(pos.X()+5,pos.Y()+5,pos.Z(),0,theta,3.14+alfa));
+                               ignition::math::Pose3d(pos.X()+0.04*cos(3.14+alfa),pos.Y()+0.04*sin(3.14+alfa),pos.Z(),0,theta,3.14+alfa));
 
+           markerMsg.set_action(ignition::msgs::Marker::ADD_MODIFY);
            node_ign.Request("/marker", markerMsg);
         }
+        else
+        {markerMsg.set_action(ignition::msgs::Marker::DELETE_ALL);
+         node_ign.Request("/marker", markerMsg);}
       
 
 
