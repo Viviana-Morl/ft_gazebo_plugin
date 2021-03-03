@@ -34,7 +34,6 @@ namespace gazebo
     private: string _ft_topic_name;
     private: ignition::transport::Node node_ign;
     private: ignition::msgs::Marker markerMsg;
-    private: ignition::msgs::Marker markerMsg2;
 
     public: void FTs_cb( geometry_msgs::Wrench w ) {
       _wrench = w;
